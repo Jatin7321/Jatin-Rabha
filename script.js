@@ -90,7 +90,7 @@ function generateBlocks(count) {
     }
 }
 
-generateBlocks(400); 
+generateBlocks(300); 
 
 
 function showTab(tabId) {
