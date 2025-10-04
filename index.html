@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatin Rabha</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="preloader">
+        <img src="/welcome-logo/WELCOME-23-08-2025.png" width="400px">
+        <img src="/MCPE GIFS/running_creeper.gif" alt="Loading..." height="300px">
+        <h4>Loading<span class="dots"></span></h4>
+    </div>
+     <div id="loading-overlay">
+        <img src="/MCPE GIFS/pwpks2a80bj31.gif" height="400px">
+         <h4>Loading<span class="dots"></span></h4>
+    </div>
+    <!--audio id="background-audio" src="/sound-effects/Earth.ogg" loop></audio!-->
+
+    <audio id="click-sound" src="/sound-effects/Click_stereo.ogg.mp3"></audio>
+    
+<div id="contents" style.="display: none;">
+    <header>
+        <nav id="header">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="menu">
+            <button onclick="scrollToSection('about')">About Me</button>
+            <button onclick="scrollToSection('programs')">Program Repo</button>
+            <button onclick="scrollToSection('notes')">Notes</button>
+            <button onclick="scrollToSection('contacts')">Contact</button>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="ground"></div>
+    
+    <div class="ground-objects">
+        <img class="daisy" src="/images/Pink_Daisy_(texture).png" height="70px">
+        <img src="/images/Rose_(texture)_BE1.png" height="70px" style="z-index: -5;">
+        <img class="crab" src="/MCPE GIFS/crab.gif" height="60px">
+        <img class="crab" src="/MCPE GIFS/crab.gif" height="40px">
+        <img class="crab" src="/MCPE GIFS/crab.gif" height="60px" style="bottom: 2170px;">
+        <img src="/images/Rose_(texture)_JE1.png" height="70px" style="z-index: -1000;">
+        <img class="daisy" src="/images/Pink_Daisy_(texture).png" height="70px">
+    </div>
+    
+    <div class="ground-stone" style="bottom: 0px;"></div>
+    <div class="ground-stone" style="bottom: 70px;"></div>
+    <div class="ground-stone" style="bottom: 1890px;"></div>
+    <div class="ground-stone" style="bottom: 1960px;"></div>
+    <div class="ground-stone" style="bottom: 2030px;"></div>
+    <div id="minecraft-ground"></div>
+
+    <!-- Sections -->
+    <section id="welcome">
+        <div class="welcome">
+            <img src="/welcome-logo/WELCOME-23-08-2025.png" width="450px">
+        <div class="welcome-container">
+            <p>Scroll down to explore<span class="dots"></span></p>
+            <div class="inside-container">
+                <img src="/MCPE GIFS/make-minecraft-minecraft-animated-gifs-renders-thumbnails.gif" height="230px">
+                 <p class="line">I’m Jatin, and this space is where I showcase my journey, projects, and ideas.</p>
+                 <p class="line"> From experimenting with code to bringing creative concepts to life, I enjoy turning imagination into something you can see and interact with.</p>
+                 <p class="line">Feel free to explore my work, and get a glimpse of the skills, passion, and curiosity that drive me forward.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="about-head">
+            <h4>About Me</h4>
+        </div>
+        <div class="about">
+        <div class="about-left-box">
+            <button onclick="showDiv('box1')" class="me-button active">My Info</button>
+            <button onclick="showDiv('box2')" class="me-button">Skills</button>
+            <button onclick="showDiv('box3')" class="me-button">Hobbies</button>
+        </div>
+        <div class="about-right-box">
+            <div id="box1" class="content">
+                <p class="hi"><img src="/MCPE GIFS/Ender_child.gif" height="200px">Hi, I'm Jatin. I'm a passionate Computer Science student and aspiring developer, currently pursuing my B.Sc. in Computer Science. I specialize in learning and applying new skills in Web Development and Game Development.</p>
+                <p class="hi2">My professional goal is to operate at the intersection of imagination and execution. I aim to blend creativity with solid technical skills—from initial concept and design brainstorming to rigorous coding and debugging—to successfully build new and interesting projects that are both functionally robust and uniquely engaging. This drive compels me to constantly learn new frameworks and technologies to bring even the most ambitious ideas to life.<img src="/MCPE GIFS/Wraith_Stun.gif" height="200px"></p>
+            </div>
+            <div id="box2" class="content">
+                    <li><img src="/MCPE GIFS/Parrot.gif" height="60px"><strong>Web Development</strong> - HTML, CSS, JavaScript, React, PHP ( Responsive Design )</li>
+                    <li><img src="/MCPE GIFS/Ghast.gif"><strong>Programming</strong> - C, C++, Python ( Data Structure, Object Oriented Programming )</li>
+                    <li><img src="/MCPE GIFS/sword.gif"><strong>2D Game Development</strong> - Designing & building interactive games using Unity, Godot etc.</li>
+                    <li><img src="/MCPE GIFS/pwpks2a80bj31.gif"><strong>Creative projects</strong> - Combining coding with visuals & designs to  make fun and ineteresting projects.</li>
+                    <li><img src="/MCPE GIFS/Chicken.gif"><strong>Producivity & Tools</strong> MS Excel (Data Analysis), PowerPoint, LaTeX (Technical Documentation), and Version Control (Git/GitHub).</li>
+            </div>
+            <div id="box3" class="content">
+                <li><img src="/MCPE GIFS/200.gif"><strong>Creative Expression : </strong>I engage in Singing and playing Musical Instruments to practice dedication, coordination, and emotional expression—skills that inform the rhythm and structure of my coding.</li>
+                <li><img src="/MCPE GIFS/minecraft-fly.gif"><strong>Visual Storytelling : </strong>I enjoy Designing (graphics/UI) and Photography, using them to focus on composition, lighting, and visual hierarchy, which sharpens my eye for user interface (UI) aesthetics.</li>
+                <li><img src="/MCPE GIFS/120px-Drowned_Necromancer_Walk_(Dungeons).gif"><strong>Narrative Crafting : </strong>Through Writing (stories, poetry, or blogging), I practice structuring complex ideas into coherent, engaging narratives, translating abstract thoughts into clear documentation.</li>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <section id="programs">
+        <h2>Program files</h2>
+        <div class="program-container">
+            <div class="button-tabs">
+                <button class="tab-button active" onclick="showTab('ds')">DS</button>
+                <button class="tab-button" onclick="showTab('oop')">OOP</button>
+                <button class="tab-button" onclick="showTab('mywork')">My Work</button>
+            </div>
+            <div class="outer-shell">
+                <div class="program-list">
+                    <div id="ds" class="tab-content">
+                        <ol>
+                            <li>
+                                <img class="icon" src="/program-preview/linked-list.png">
+                                <a  href="/programs/sll.html">Linked list</a>
+                            </li>
+                            <li>
+                                <img class="icon" src="/program-preview/stack.png">
+                                <a href="/programs/stack.html">Stack</a>
+                            </li>
+                            <li>
+                                <img class="icon" src="/program-preview/binary-search.png">
+                                <a href="/programs/binary_search.html">Binary Search</a>
+                            </li>
+                            <li>
+                                <img class="icon" src="/program-preview/selection-sort.png">
+                                <a href="/programs/selection-sort.html">Selection Sort</a>
+                            </li>
+                        </ol>
+                    </div>
+                    <div id="oop" class="tab-content" style="display: none;">
+                        <ol>
+                            <li>
+                                <img class="icon" src="/program-preview/swap.png">
+                                <a href="/programs/swap.html">Mumber Swapping</a>
+                            </li>
+                            <li>
+                                <img class="icon" src="/program-preview/binary-search.png">
+                                <a href="/programs/grade-card.html">Students Grade Card</a>
+                            </li>
+                            <li>
+                                <img class="icon" src="/program-preview/student-data.png">
+                                <a href="/programs/student.html">Students Details</a>
+                            </li>
+                        </ol>
+                    </div>
+                    <div id="mywork" class="tab-content" style="display: none;">
+                        <ol>
+                            <li>
+                                <img class="icon" src="">
+                                <a href="">Prashna Bhandar</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="notes">
+        <div class="notes-section">
+            <div class="note-paper left-page">
+                <h2>Notes</h2>
+                <p>Data Structure</p>
+                <ol>
+                    <li><a href="https://drive.google.com/file/d/1dtLU2yurjTE9n6_38AAV_CNMXkUDcq5N/view?usp=drivesdk">Data Structure</a></li>
+                    <li><a href="https://drive.google.com/file/d/1zAvtXDvJWSqUJJQ2ZgxpTIIdadX9p72K/view?usp=drivesdk">Tree Data Structure</a></li>
+                    <li><a href="https://drive.google.com/file/d/1B2s8zfDG-qM7JwoX-TmiSI6PTibSafk9/view?usp=drivesdk">Binary Tree</a></li>
+                    <li><a href="https://drive.google.com/file/d/1qvOu74IraaozL7Fk1CZc1yZYzi_kyUCE/view?usp=drivesdk">Binary Search Technique</a></li>
+                    <li><a href="https://drive.google.com/file/d/1ZOwLlXoEfw5KWxFyNtMBfBgfupGn26Xe/view?usp=drivesdk">Stack Data Structure</a></li>
+                    <li><a href="https://drive.google.com/file/d/12hUaQycpKF5MDFhrJOiiwCXsuoWnurbX/view?usp=drivesdk">Queue Data Structure</a></li>
+                    <li><a href="https://drive.google.com/file/d/1SZfO9JL8iY9cAA9pEx1KIz0N8HYLIQBO/view?usp=drivesdk">Linked List</a></li>
+                    <li><a href="https://drive.google.com/file/d/1GL6ErIrJ9CfakOmrpSyZ6uXbQI-V17on/view?usp=drivesdk">Deleting Node in a BST</a></li>
+                </ol>
+            </div>
+            <div class="note-paper right-page">
+                <h2>Notes</h2>
+                <p>Object Oriented Programming</p>
+                <ol>
+                    <li><a href="https://www.geeksforgeeks.org/cpp/object-oriented-programming-in-cpp/">Object Oriented Programming</a></li>
+                </ol>
+            
+                <p>Differential Equation</p>
+                <ol>
+                    <li><a href="https://drive.google.com/file/d/1ibu-fMCOY1OyUo8T0hgnMU0pydXMbgGJ/view?usp=drivesdk">Homogeneous Eqn</a></li>
+                    <li><a href="https://drive.google.com/file/d/1jEsmp-wfxKdJHszXbWWuoyhnaUvyd63I/view?usp=drivesdk">Non-homogeneous Eqn</a></li>
+                     <li><a href="https://drive.google.com/file/d/1kcuOt4lBPLb9LzRLzOoH69CnfQlagHH5/view?usp=drivesdk">Differential Eqns</a></li>
+                    <li><a href="https://drive.google.com/file/d/1oHlHhlDn59LeYBxWQUmN5eO1PNdD7DSa/view?usp=drivesdk">Variation of Parameters</a></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+        <div class="larg-box">
+            <h2>Contact Me</h2>
+        <div class="inside-box">
+        <div class="craft-grid">
+            <div class="slot" data-tip="Instagram">
+                <a href="https://www.instagram.com/jatin_zuro?igsh=ZDA5czhrZGFyeTg="><img src="/logo/instagram.png" class="logo"></a>
+            </div>
+            <div class="slot" data-tip="Github">
+                <a href="https://github.com/Jatin7321"><img src="/logo/github.png" class="logo"></a>
+            </div>
+            <div class="slot" data-tip="Email">
+                <a href="mailto:jatinrabha53@gmail.com"><img src="/logo/gmail.png" class="logo"></a>
+            </div>
+            <div class="slot" data-tip="Youtube">
+                <a href="https://youtube.com/@jatin7321?si=nfw3U1P9x20SNiyv"><img src="/logo/youtube.png" class="logo"></a>
+            </div>
+            <div class="slot" data-tip="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=100092287788334"><img src="/logo/fb.png" class="logo"></a>
+            </div>
+            <div class="slot" data-tip="null"></div>
+            <div class="slot" data-tip="null"></div>
+            <div class="slot" data-tip="null"></div>
+            <div class="slot" data-tip="null"></div>
+        </div>
+        <div class="arrow">➡</div>
+        <div class="result-slot" data-tip="Send_feedback">
+            <a href="#" id="feedbackBtn"><img src="/logo/Book_and_Quill.png" class="feed-back"></a>
+            <div id="feedbackPopUp">
+                <div class="PopUp-content">
+                    <form action="https://formspree.io/f/xnnbdpey" method="POST">
+                        <textarea name="feedback" placeholder="Write your feedback....."></textarea>
+                        <button type="submit">submit</button>
+                    </form>
+                </div>
+                <span id="closePopUp" data-tip="close">&times;</span>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    <button onclick="scrollDragon()" id="scrollBtn">🔺</button>
+
+    <div id="dragonWrapper">
+        <img src="/MCPE GIFS/dragon.gif" id="dragon" alt="Dragon">
+    </div>
+    <audio id="dragon-sound" src="/sound-effects/Ender_dragon_flap6.ogg" preload="auto" loop></audio>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
