@@ -11,8 +11,8 @@
 
 <body>
     <div id="preloader">
-        <img src="/welcome-logo/WELCOME-23-08-2025.png" width="400px">
-        <img src="/MCPE GIFS/running_creeper.gif" alt="Loading..." height="200px">
+        <img class="wc" src="/welcome-logo/WELCOME-23-08-2025.png" width="400px">
+        <img class="creeper" src="/MCPE GIFS/running_creeper.gif" alt="Loading..." height="200px">
         <h4>Loading<span class="dots"></span></h4>
     </div>
      <div id="loading-overlay">
@@ -52,8 +52,7 @@
         <img class="daisy" src="/images/Pink_Daisy_(texture).png" height="70px">
     </div>
     
-    <div class="ground-stone" style="bottom: 0;"></div>
-    <div class="ground-stone" style="bottom: 1100px;"></div>
+    <div class="ground-stone"></div>
     <div id="minecraft-ground"></div>
 
     <!-- Sections -->
@@ -208,22 +207,23 @@
             <div class="slot" data-tip="Facebook">
                 <a href="https://www.facebook.com/profile.php?id=100092287788334"><img src="/logo/fb.png" class="logo"></a>
             </div>
-            <div class="slot" data-tip="null"></div>
-            <div class="slot" data-tip="null"></div>
-            <div class="slot" data-tip="null"></div>
-            <div class="slot" data-tip="null"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
         </div>
         <div class="arrow">➡</div>
         <div class="result-slot" data-tip="Send_feedback">
             <a href="#" id="feedbackBtn"><img src="/logo/Book_and_Quill.png" class="feed-back"></a>
             <div id="feedbackPopUp">
                 <div class="PopUp-content">
+                    <span id="closePopUp" data-tip="close">&times;</span>
                     <form action="https://formspree.io/f/xnnbdpey" method="POST">
                         <textarea name="feedback" placeholder="Write your feedback....."></textarea>
                         <button type="submit">submit</button>
                     </form>
                 </div>
-                <span id="closePopUp" data-tip="close">&times;</span>
+                
             </div>
         </div>
         </div>
