@@ -172,7 +172,7 @@ function scrollDragon() {
     
     document.addEventListener('DOMContentLoaded', function() {
   const loadingOverlay = document.getElementById('loading-overlay');
-  const navButtons = document.querySelectorAll('.pname'); 
+  const navButtons = document.querySelectorAll('.tab-content li a'); 
   navButtons.forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault(); 
@@ -180,7 +180,7 @@ function scrollDragon() {
       const destination = this.href; 
       setTimeout(() => {
         window.location.href = destination;
-      }, 1500);
+      }, 1800);
     });
   });
 });
