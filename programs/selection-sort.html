@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Selection Sort Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9; }
+
+        /* Code Block Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .comment { color: #75715e; }
+        .literal { color: #ae81ff; } 
+        .function { color: #e6db74; }
+
+        /* UI and Output Styling */
+        .input-container { 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 5px; 
+            background-color: #ffffff; 
+        }
+        
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #ffffff;
+            color: #333;
+        }
+        button { padding: 10px 20px; background-color: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; border-radius: 4px;}
+        button:hover { background-color: #2980b9; }
+        
+        .array-input label { font-weight: bold; }
+        #arrayElements { width: 80%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;}
+    </style>
+</head>
+<body>
+
+    <h2>C++ Selection Sort Program:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="include">#include</span> &lt;string&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Function to perform Selection Sort</span>
+<span class="keyword">void</span> <span class="function">selectionSort</span>(<span class="keyword">int</span> arr[], <span class="keyword">int</span> size) {
+    <span class="comment">// Outer loop: Iterate through the array (to find the minimum element)</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="literal">0</span>; i < size - <span class="literal">1</span>; <span class="operator">++</span>i) {
+        <span class="keyword">int</span> min_idx = i;
+
+        <span class="comment">// Inner loop: Find the actual minimum element in the remaining unsorted array</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="literal">1</span>; j < size; <span class="operator">++</span>j) {
+            <span class="keyword">if</span> (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+
+        <span class="comment">// Swap the found minimum element with the element at the current position 'i'</span>
+        <span class="keyword">if</span> (min_idx != i) {
+            <span class="keyword">int</span> temp = arr[i];
+            arr[i] = arr[min_idx];
+            arr[min_idx] = temp;
+        }
+    }
+}
+
+<span class="comment">// Function to print the array elements</span>
+<span class="keyword">void</span> <span class="function">printArray</span>(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> size) {
+    <span class="comment">// ... print logic ...</span>
+}
+
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="type">cout</span> &lt;&lt; <span class="string">"--- C++ Selection Sort Demonstration ---\\n\\n"</span>;
+
+    <span class="keyword">int</span> data[] = {<span class="literal">64</span>, <span class="literal">25</span>, <span class="literal">12</span>, <span class="literal">22</span>, <span class="literal">11</span>};
+    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(data) / <span class="keyword">sizeof</span>(data[<span class="literal">0</span>]);
+
+    <span class="comment">// ... function calls ...</span>
+
+    <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Simulated Selection Sort Entry:</h2>
+    
+    <div class="input-container">
+        <div class="array-input">
+            <label for="arrayElements">Array Elements (comma-separated, unsorted):</label><br>
+            <input type="text" id="arrayElements" value="64, 25, 12, 22, 11">
+        </div>
+        
+        <button onclick="performSort()">Perform Selection Sort</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">Enter array elements, then click "Perform Selection Sort" to see the steps.</div>
+
+    <script>
+        function selectionSortJS(arr) {
+            const size = arr.length;
+            let log = "--- Sorting Steps ---\n";
+            let currentArray = [...arr]; // Copy of the array for manipulation
+
+            // Outer loop
+            for (let i = 0; i < size - 1; i++) {
+                let min_idx = i;
+
+                // Inner loop: Find minimum element
+                for (let j = i + 1; j < size; j++) {
+                    if (currentArray[j] < currentArray[min_idx]) {
+                        min_idx = j;
+                    }
+                }
+
+                // Swap the found minimum element with the element at position 'i'
+                if (min_idx !== i) {
+                    [currentArray[i], currentArray[min_idx]] = [currentArray[min_idx], currentArray[i]];
+                }
+                
+                // Log the state after placing the correct minimum element at position 'i'
+                log += `Pass ${i + 1}: Minimum element (${currentArray[i]}) placed at index ${i}. Array state: [${currentArray.join(', ')}]\n`;
+            }
+            
+            return { sortedArray: currentArray, log: log };
+        }
+
+        function performSort() {
+            const outputElement = document.getElementById('output');
+            const arrayInput = document.getElementById('arrayElements').value;
+            
+            // 1. Parse Array Input
+            const initialArray = arrayInput.split(',')
+                                 .map(s => parseInt(s.trim()))
+                                 .filter(n => !isNaN(n)); // Filter out non-numbers
+            
+            if (initialArray.length === 0) {
+                outputElement.innerHTML = "<strong>ERROR:</strong> Please enter a valid, comma-separated list of numbers.";
+                return;
+            }
+
+            // 2. Perform Sort (Mimicking C++ logic)
+            const { sortedArray, log } = selectionSortJS(initialArray);
+
+            // 3. Generate Final Output
+            const finalOutput = `
+--- C++ Selection Sort Demonstration ---
+
+Unsorted Array: ${initialArray.join(', ')}
+
+${log.trim()}
+
+--- Sort Result ---
+Sorted Array: ${sortedArray.join(', ')}
+--------------------------------------
+            `;
+
+            outputElement.innerHTML = `<pre style="background-color:#fff; color:#333; border:none; padding: 0px;">${finalOutput.trim()}</pre>`;
+        }
+
+        // Run on load with default values
+        document.addEventListener('DOMContentLoaded', performSort);
+    </script>
+
+</body>
+</html>

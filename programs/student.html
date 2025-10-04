@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Student Personal Details Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9; }
+
+        /* Code Block Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .class { color: #fd971f; }
+        .function { color: #e6db74; }
+        .literal { color: #ae81ff; } 
+        
+        /* UI and Output Styling */
+        .input-container { 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 5px; 
+            background-color: #ffffff; 
+        }
+        
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #ffffff;
+            color: #333;
+        }
+        button { padding: 10px 20px; background-color: #9b59b6; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; border-radius: 4px;}
+        button:hover { background-color: #8e44ad; }
+        
+        /* Table Styling for Data Entry */
+        #studentData { width: 100%; border-collapse: collapse; margin-top: 10px;}
+        #studentData th, #studentData td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        #studentData th { background-color: #f3e5f5; }
+        #studentData input { width: 90%; padding: 3px; border: 1px solid #ccc; }
+        #studentData input[type="number"] { text-align: center; }
+        #studentData input[type="date"] { width: 95%; }
+        #studentData input[type="text"][id^="address"] { width: 95%; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Student Personal Details Program:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="include">#include</span> &lt;string&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="keyword">class</span> <span class="class">Student</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">int</span> rollNo;
+    <span class="type">string</span> name;
+    <span class="type">string</span> className;
+    <span class="type">string</span> dob;       <span class="comment">// Date of Birth</span>
+    <span class="type">string</span> address;
+
+<span class="keyword">public</span>:
+    <span class="comment">// Constructor</span>
+    <span class="function">Student</span>(<span class="keyword">int</span> r, <span class="type">string</span> n, <span class="type">string</span> c, <span class="type">string</span> d, <span class="type">string</span> a) {
+        rollNo = r;
+        name = n;
+        className = c;
+        dob = d;
+        address = a;
+    }
+
+    <span class="comment">// Method to display the student's personal record</span>
+    <span class="keyword">void</span> <span class="function">displayDetails</span>() <span class="keyword">const</span> {
+        <span class="comment">// Outputting with basic spacing</span>
+        <span class="type">cout</span> &lt;&lt; rollNo &lt;&lt; <span class="string">"\t"</span>
+             &lt;&lt; name &lt;&lt; <span class="string">"\t"</span>
+             &lt;&lt; className &lt;&lt; <span class="string">"\t"</span>
+             &lt;&lt; dob &lt;&lt; <span class="string">"\t"</span>
+             &lt;&lt; address &lt;&lt; <span class="type">endl</span>;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="type">cout</span> &lt;&lt; <span class="string">"--- C++ Student Personal Record System ---\\n\\n"</span>;
+
+    <span class="comment">// Create a simple array of Student objects</span>
+    <span class="class">Student</span> students[<span class="literal">2</span>] = {
+        <span class="class">Student</span>(<span class="literal">369</span>, <span class="string">"Jatin"</span>, <span class="string">"B.Sc 3rd Sem"</span>, <span class="string">"2006-01-31"</span>, <span class="string">"Damra"</span>),
+        <span class="class">Student</span>(<span class="literal">206</span>, <span class="string">"Shree"</span>, <span class="string">"B.Sc 3rd Sem"</span>, <span class="string">"2005-08-31"</span>, <span class="string">"Agia"</span>)
+    };
+
+    <span class="comment">// Display the Header</span>
+    <span class="type">cout</span> &lt;&lt; <span class="string">"ROLL NO\tNAME\t\tCLASS\t\tDOB\t\tADDRESS\\n"</span>;
+    <span class="type">cout</span> &lt;&lt; <span class="string">"---------------------------------------------------------------------------\\n"</span>;
+
+    <span class="comment">// Loop through the array and display each record</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="literal">0</span>; i &lt; <span class="literal">2</span>; <span class="operator">++</span>i) {
+        students[i].<span class="function">displayDetails</span>();
+    }
+
+    <span class="type">cout</span> &lt;&lt; <span class="string">"\\n---------------------------------------------------------------------------\\n"</span>;
+    <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Simulated Student Data Entry (2 Records):</h2>
+    
+    <div class="input-container">
+        <table id="studentData">
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="number" id="roll1" value="101" min="1"></td>
+                    <td><input type="text" id="name1" value="Anya Forger"></td>
+                    <td><input type="text" id="class1" value="2nd Grade"></td>
+                    <td><input type="date" id="dob1" value="2018-02-15"></td>
+                    <td><input type="text" id="address1" value="West Sektor, Apt 7"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="roll2" value="102" min="1"></td>
+                    <td><input type="text" id="name2" value="Damian Desmond"></td>
+                    <td><input type="text" id="class2" value="2nd Grade"></td>
+                    <td><input type="date" id="dob2" value="2018-04-20"></td>
+                    <td><input type="text" id="address2" value="East Sektor, Villa 9"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="generateRecords()">Generate C++ Console Output</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">Click "Generate C++ Console Output" to see the simulated program output.</div>
+
+    <script>
+        // Data structure to hold student data (mimicking the C++ Class structure)
+        class JSStudent {
+            constructor(rollNo, name, className, dob, address) {
+                this.rollNo = rollNo;
+                this.name = name;
+                this.className = className;
+                this.dob = dob;
+                this.address = address;
+            }
+
+            // Mimics the C++ displayDetails function
+            displayDetails() {
+                // Fixed spacing to mimic C++ console output alignment
+                return `${String(this.rollNo).padEnd(8)} ${this.name.padEnd(16)} ${this.className.padEnd(14)} ${this.dob.padEnd(12)} ${this.address}`;
+            }
+        }
+
+        function generateRecords() {
+            const outputElement = document.getElementById('output');
+            const students = [];
+
+            // Collect data for 2 students
+            for (let i = 1; i <= 2; i++) {
+                const rollNo = document.getElementById(`roll${i}`).value;
+                const name = document.getElementById(`name${i}`).value;
+                const className = document.getElementById(`class${i}`).value;
+                const dob = document.getElementById(`dob${i}`).value;
+                const address = document.getElementById(`address${i}`).value;
+                
+                // Basic validation
+                if (!rollNo || !name || !className || !dob || !address) {
+                    outputElement.innerHTML = "<strong>ERROR:</strong> Please ensure all fields are filled out.";
+                    return;
+                }
+
+                students.push(new JSStudent(rollNo, name, className, dob, address));
+            }
+
+            // Generate the output string mimicking the C++ console
+            let cardOutput = "--- C++ Student Personal Record System ---\n\n";
+            
+            // Header: Mimicking the C++ cout header spacing
+            cardOutput += "ROLL NO \tNAME            \tCLASS         \tDOB         \tADDRESS\n";
+            cardOutput += "---------------------------------------------------------------------------\n";
+
+            // Data rows
+            for (const student of students) {
+                cardOutput += student.displayDetails() + "\n"; 
+            }
+
+            cardOutput += "\n---------------------------------------------------------------------------\n";
+
+            // Display the final output in the console box
+            outputElement.innerHTML = `<pre style="background-color:#fff; color:#333; border:none; padding: 0px;">${cardOutput.trim()}</pre>`;
+        }
+
+        // Run on load with default values
+        document.addEventListener('DOMContentLoaded', generateRecords);
+    </script>
+
+</body>
+</html>

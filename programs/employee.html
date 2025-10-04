@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Employee Record Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+
+        /* Code Block Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .class { color: #fd971f; }
+        .function { color: #e6db74; }
+        .literal { color: #ae81ff; } 
+        
+        /* UI and Output Styling */
+        .input-container { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; background-color: #f9f9f9; }
+        
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px;}
+        button:hover { background-color: #0056b3; }
+        
+        /* Table Styling for Data Entry */
+        #employeeData { width: 100%; border-collapse: collapse; }
+        #employeeData th, #employeeData td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        #employeeData th { background-color: #e0e0e0; }
+        #employeeData input { width: 90%; padding: 3px; border: 1px solid #ccc; }
+        #employeeData input[type="number"] { text-align: right; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Employee Record Program:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="include">#include</span> &lt;string&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Class definition</span>
+<span class="keyword">class</span> <span class="class">Employee</span> {
+<span class="keyword">private</span>:
+    <span class="keyword">int</span> id;
+    <span class="type">string</span> name;
+    <span class="type">string</span> department;
+    <span class="type">double</span> salary;
+
+<span class="keyword">public</span>:
+    <span class="comment">// Constructor</span>
+    <span class="function">Employee</span>(<span class="keyword">int</span> emp_id, <span class="type">string</span> emp_name, <span class="type">string</span> emp_dept, <span class="type">double</span> emp_salary) {
+        id = emp_id;
+        name = emp_name;
+        department = emp_dept;
+        salary = emp_salary;
+    }
+
+    <span class="comment">// Method to display employee details</span>
+    <span class="keyword">void</span> <span class="function">displayRecord</span>() <span class="keyword">const</span> {
+        <span class="comment">// Using basic spacing with cout</span>
+        <span class="type">cout</span> &lt;&lt; id &lt;&lt; <span class="string">"\t\t"</span> 
+             &lt;&lt; name &lt;&lt; <span class="string">"\t\t"</span>
+             &lt;&lt; department &lt;&lt; <span class="string">"\t\t"</span>
+             &lt;&lt; salary &lt;&lt; <span class="type">endl</span>;
+    }
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="type">cout</span> &lt;&lt; <span class="string">"--- C++ Employee Record System (Simple) ---\\n\\n"</span>;
+
+    <span class="comment">// 1. Create a simple array of Employee objects</span>
+    <span class="class">Employee</span> employees[<span class="literal">3</span>] = {
+        <span class="class">Employee</span>(<span class="literal">101</span>, <span class="string">"Alice Johnson"</span>, <span class="string">"HR"</span>, <span class="literal">55000.00</span>),
+        <span class="class">Employee</span>(<span class="literal">102</span>, <span class="string">"Bob Smith"</span>, <span class="string">"Eng"</span>, <span class="literal">72500.50</span>),
+        <span class="class">Employee</span>(<span class="literal">103</span>, <span class="string">"Charlie Brown"</span>, <span class="string">"Sales"</span>, <span class="literal">60000.00</span>)
+    };
+
+    <span class="comment">// 2. Display the Header</span>
+    <span class="type">cout</span> &lt;&lt; <span class="string">"ID\t\tNAME\t\tDEPARTMENT\tSALARY\\n"</span>;
+    <span class="type">cout</span> &lt;&lt; <span class="string">"--------------------------------------------------------\\n"</span>;
+
+    <span class="comment">// 3. Loop through the array and display each record</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i <span class="operator">=</span> <span class="literal">0</span>; i <span class="operator">&lt;</span> <span class="literal">3</span>; <span class="operator">++</span>i) {
+        employees[i].<span class="function">displayRecord</span>();
+    }
+
+    <span class="type">cout</span> &lt;&lt; <span class="string">"\\n--------------------------------------------------------\\n"</span>;
+    <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Simulated Employee Data Entry (3 Records):</h2>
+    
+    <div class="input-container">
+        <table id="employeeData">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="number" id="id1" value="101" min="1"></td>
+                    <td><input type="text" id="name1" value="Alice Johnson"></td>
+                    <td><input type="text" id="dept1" value="HR"></td>
+                    <td><input type="number" id="salary1" value="55000.00" min="0" step="0.01"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="id2" value="102" min="1"></td>
+                    <td><input type="text" id="name2" value="Bob Smith"></td>
+                    <td><input type="text" id="dept2" value="Eng"></td>
+                    <td><input type="number" id="salary2" value="72500.50" min="0" step="0.01"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="id3" value="103" min="1"></td>
+                    <td><input type="text" id="name3" value="Charlie Brown"></td>
+                    <td><input type="text" id="dept3" value="Sales"></td>
+                    <td><input type="number" id="salary3" value="60000.00" min="0" step="0.01"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="generateRecords()">Generate C++ Console Output</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">Click "Generate C++ Console Output" to see the simulated program output.</div>
+
+    <script>
+        // Data structure to hold employee data
+        class JSEmployee {
+            constructor(id, name, department, salary) {
+                this.id = id;
+                this.name = name;
+                this.department = department;
+                this.salary = parseFloat(salary).toFixed(2);
+            }
+
+            // Mimics the C++ displayRecord function (using tabs/spacing for console look)
+            displayRecord() {
+                // Using spaces instead of tabs to ensure fixed alignment in the PRE tag
+                return `${String(this.id).padEnd(8)}  ${this.name.padEnd(20)}  ${this.department.padEnd(14)}  ${this.salary}`;
+            }
+        }
+
+        function generateRecords() {
+            const outputElement = document.getElementById('output');
+            const employees = [];
+
+            // Collect data for 3 employees
+            for (let i = 1; i <= 3; i++) {
+                const id = document.getElementById(`id${i}`).value;
+                const name = document.getElementById(`name${i}`).value;
+                const dept = document.getElementById(`dept${i}`).value;
+                const salary = document.getElementById(`salary${i}`).value;
+                
+                // Basic validation
+                if (!id || !name || !dept || isNaN(parseFloat(salary)) || parseFloat(salary) < 0) {
+                    outputElement.innerHTML = "<strong>ERROR:</strong> Please ensure all fields are correctly filled with valid data.";
+                    return;
+                }
+
+                employees.push(new JSEmployee(id, name, dept, salary));
+            }
+
+            // Generate the output string mimicking the C++ console
+            let cardOutput = "--- C++ Employee Record System (Simple) ---\n\n";
+            
+            // Header: Mimicking the C++ cout header spacing
+            cardOutput += "ID      \tNAME                \tDEPARTMENT      \tSALARY\n";
+            cardOutput += "--------------------------------------------------------\n";
+
+            // Data rows
+            for (const emp of employees) {
+                // Using tabs here to show the intended C++ output style, 
+                // though actual rendering depends on the browser's PRE tag font.
+                cardOutput += emp.displayRecord() + "\n"; 
+            }
+
+            cardOutput += "\n--------------------------------------------------------";
+
+            // Display the final output in the console box
+            outputElement.innerHTML = `<pre style="background-color:#fff; color:#333; border:none; padding: 0px;">${cardOutput.trim()}</pre>`;
+        }
+
+        // Run on load with default values
+        document.addEventListener('DOMContentLoaded', generateRecords);
+    </script>
+
+</body>
+</html>

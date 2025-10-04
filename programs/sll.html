@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Singly Linked List Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        /* Code Block Container Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .operator { color: #f8f8f2; }
+        .struct { color: #fd971f; }
+        .function { color: #e6db74; }
+        .literal { color: #ae81ff; } /* e.g., NULL, 0, 1, 2 */
+        
+        /* UI and Output Styling */
+        .menu-container { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        button { padding: 8px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-weight: bold; margin-right: 10px; }
+        button:hover { background-color: #45a049; }
+        input[type="number"] { padding: 5px; width: 80px; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Singly Linked List Code:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Node structure</span>
+<span class="keyword">struct</span> <span class="struct">Node</span> {
+ <span class="keyword">int</span> data;
+ <span class="struct">Node</span>* next;
+};
+
+<span class="comment">// Function to insert a new node at the end</span>
+<span class="keyword">void</span> <span class="function">insertNode</span>(<span class="struct">Node</span>*<span class="operator">&amp;</span> head, <span class="keyword">int</span> value) {
+ <span class="struct">Node</span>* newNode <span class="operator">=</span> <span class="keyword">new</span> <span class="struct">Node</span>();
+ newNode<span class="operator">-></span>data <span class="operator">=</span> value;
+ newNode<span class="operator">-></span>next <span class="operator">=</span> <span class="literal">NULL</span>;
+ <span class="keyword">if</span> (head <span class="operator">==</span> <span class="literal">NULL</span>) {
+  head <span class="operator">=</span> newNode;
+  <span class="keyword">return</span>;
+ }
+ <span class="struct">Node</span>* temp <span class="operator">=</span> head;
+ <span class="keyword">while</span> (temp<span class="operator">-></span>next <span class="operator">!=</span> <span class="literal">NULL</span>) {
+  temp <span class="operator">=</span> temp<span class="operator">-></span>next;
+ }
+ temp<span class="operator">-></span>next <span class="operator">=</span> newNode;
+}
+
+<span class="comment">// Function to delete a node by value</span>
+<span class="keyword">void</span> <span class="function">deleteNode</span>(<span class="struct">Node</span>*<span class="operator">&amp;</span> head, <span class="keyword">int</span> value) {
+ <span class="keyword">if</span> (head <span class="operator">==</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"List is empty. Cannot delete.\n"</span>;
+  <span class="keyword">return</span>;
+ }
+ <span class="comment">// If the node to delete is the head</span>
+ <span class="keyword">if</span> (head<span class="operator">-></span>data <span class="operator">==</span> value) {
+  <span class="struct">Node</span>* temp <span class="operator">=</span> head;
+  head <span class="operator">=</span> head<span class="operator">-></span>next;
+  <span class="keyword">delete</span> temp;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Deleted "</span> <span class="operator">&lt;&lt;</span> value <span class="operator">&lt;&lt;</span> <span class="string">" from the list.\n"</span>;
+  <span class="keyword">return</span>;
+ }
+<span class="struct">Node</span>* current <span class="operator">=</span> head;
+ <span class="struct">Node</span>* prev <span class="operator">=</span> <span class="literal">NULL</span>;
+ <span class="keyword">while</span> (current <span class="operator">!=</span> <span class="literal">NULL</span> <span class="operator">&amp;&amp;</span> current<span class="operator">-></span>data <span class="operator">!=</span> value) {
+  prev <span class="operator">=</span> current;
+  current <span class="operator">=</span> current<span class="operator">-></span>next;
+ }
+ <span class="keyword">if</span> (current <span class="operator">==</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Value not found in the list.\n"</span>;
+  <span class="keyword">return</span>;
+ }
+ prev<span class="operator">-></span>next <span class="operator">=</span> current<span class="operator">-></span>next;
+ <span class="keyword">delete</span> current;
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Deleted "</span> <span class="operator">&lt;&lt;</span> value <span class="operator">&lt;&lt;</span> <span class="string">" from the list.\n"</span>;
+}
+
+<span class="comment">// Function to display the linked list</span>
+<span class="keyword">void</span> <span class="function">displayList</span>(<span class="struct">Node</span>* head) {
+ <span class="keyword">if</span> (head <span class="operator">==</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"List is empty.\n"</span>;
+  <span class="keyword">return</span>;
+ }
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Linked List: "</span>;
+ <span class="keyword">while</span> (head <span class="operator">!=</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> head<span class="operator">-></span>data <span class="operator">&lt;&lt;</span> <span class="string">" -> "</span>;
+  head <span class="operator">=</span> head<span class="operator">-></span>next;
+ }
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"NULL\n"</span>;
+}
+
+<span class="keyword">int</span> main() {
+ <span class="struct">Node</span>* head <span class="operator">=</span> <span class="literal">NULL</span>;
+ <span class="keyword">int</span> choice, value;
+ <span class="keyword">do</span> {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"\n--- Singly Linked List Menu ---\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"1. Insert element\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"2. Delete element\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"3. Display list\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"4. Exit\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Enter your choice: "</span>;
+  <span class="type">cin</span> <span class="operator">&gt;&gt;</span> choice;
+  <span class="keyword">switch</span> (choice) {
+   <span class="keyword">case</span> <span class="literal">1</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Enter value to insert: "</span>;
+    <span class="type">cin</span> <span class="operator">&gt;&gt;</span> value;
+    <span class="function">insertNode</span>(head, value);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">2</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Enter value to delete: "</span>;
+    <span class="type">cin</span> <span class="operator">&gt;&gt;</span> value;
+    <span class="function">deleteNode</span>(head, value);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">3</span>:
+    <span class="function">displayList</span>(head);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">4</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Exiting...\n"</span>;
+    <span class="keyword">break</span>;
+   <span class="keyword">default</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Invalid choice. Try again.\n"</span>;
+  }
+ } <span class="keyword">while</span> (choice <span class="operator">!=</span> <span class="literal">4</span>);
+ <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Interactive Linked List Simulation:</h2>
+    
+    <div class="menu-container">
+        <label for="input-value">Value:</label>
+        <input type="number" id="input-value" value="10">
+        
+        <button onclick="simulateOperation(1)">1. Insert</button>
+        <button onclick="simulateOperation(2)">2. Delete</button>
+        <button onclick="simulateOperation(3)">3. Display</button>
+        <button onclick="simulateOperation(4)">4. Exit/Reset</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">--- Singly Linked List Menu ---<br>Type a value and select an operation (1, 2, 3, or 4).</div>
+
+    <script>
+        // --- JAVASCRIPT SIMULATION OF LINKED LIST ---
+        
+        // 1. Internal Linked List Representation (JavaScript Array for simplicity)
+        let linkedList = [];
+        let outputLog = "";
+
+        function log(message) {
+            outputLog += message + "\n";
+            document.getElementById('output').innerHTML = outputLog.replace(/\n/g, '<br>');
+        }
+
+        function displayListJs() {
+            if (linkedList.length === 0) {
+                log("List is empty.");
+                return;
+            }
+            log("Linked List: " + linkedList.join(" -> ") + " -> NULL");
+        }
+
+        function insertNodeJs(value) {
+            linkedList.push(value); // Insertion at the end is simple with an array
+            log("Enter value to insert: " + value);
+            log("--- Node inserted ---");
+        }
+
+        function deleteNodeJs(value) {
+            log("Enter value to delete: " + value);
+            const index = linkedList.indexOf(value);
+
+            if (linkedList.length === 0) {
+                log("List is empty. Cannot delete.");
+            } else if (index === -1) {
+                log("Value not found in the list.");
+            } else {
+                linkedList.splice(index, 1); // Remove 1 element at the found index
+                log("Deleted " + value + " from the list.");
+            }
+        }
+        
+        function resetSimulation() {
+            linkedList = [];
+            outputLog = "--- Singly Linked List Menu ---\n";
+            outputLog += "1. Insert element\n2. Delete element\n3. Display list\n4. Exit\n";
+            log("Exiting... List has been reset.");
+        }
+
+        // Main simulation function called by the buttons
+        function simulateOperation(choice) {
+            let value = parseInt(document.getElementById('input-value').value);
+            
+            // Log the menu state
+            log("\n--- Singly Linked List Menu ---");
+            log("1. Insert element\n2. Delete element\n3. Display list\n4. Exit");
+            log("Enter your choice: " + choice);
+
+            switch (choice) {
+                case 1:
+                    if (isNaN(value)) {
+                        log("Invalid value. Please enter a number.");
+                        return;
+                    }
+                    insertNodeJs(value);
+                    break;
+                case 2:
+                    if (isNaN(value)) {
+                        log("Invalid value. Please enter a number.");
+                        return;
+                    }
+                    deleteNodeJs(value);
+                    break;
+                case 3:
+                    displayListJs();
+                    break;
+                case 4:
+                    resetSimulation();
+                    break;
+                default:
+                    log("Invalid choice. Try again.");
+            }
+        }
+
+        // Initialize the console view
+        document.addEventListener('DOMContentLoaded', () => {
+             resetSimulation();
+        });
+    </script>
+
+</body>
+</html>

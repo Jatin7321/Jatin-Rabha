@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stack Using Linked List Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        /* Code Block Container Styling (Dark Theme) */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .operator { color: #f8f8f2; }
+        .struct { color: #fd971f; }
+        .function { color: #e6db74; }
+        .literal { color: #ae81ff; } 
+        
+        /* UI and Output Styling */
+        .menu-container { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        button { padding: 8px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-weight: bold; margin-right: 10px; }
+        button:hover { background-color: #45a049; }
+        input[type="number"] { padding: 5px; width: 80px; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Stack Implementation (Using Linked List):</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Node structure</span>
+<span class="keyword">struct</span> <span class="struct">Node</span> {
+ <span class="keyword">int</span> data;
+ <span class="struct">Node</span>* next;
+};
+
+<span class="comment">// Push: Insert at the beginning (the Top of the stack)</span>
+<span class="keyword">void</span> <span class="function">push</span>(<span class="struct">Node</span>*<span class="operator">&amp;</span> top, <span class="keyword">int</span> value) {
+ <span class="struct">Node</span>* newNode <span class="operator">=</span> <span class="keyword">new</span> <span class="struct">Node</span>();
+ newNode<span class="operator">-></span>data <span class="operator">=</span> value;
+ newNode<span class="operator">-></span>next <span class="operator">=</span> top; <span class="comment">// New node points to old top</span>
+ top <span class="operator">=</span> newNode;     <span class="comment">// New node becomes the new top</span>
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Pushed "</span> <span class="operator">&lt;&lt;</span> value <span class="operator">&lt;&lt;</span> <span class="string">" onto the stack.\n"</span>;
+}
+
+<span class="comment">// Pop: Remove from the beginning (the Top of the stack)</span>
+<span class="keyword">void</span> <span class="function">pop</span>(<span class="struct">Node</span>*<span class="operator">&amp;</span> top) {
+ <span class="keyword">if</span> (top <span class="operator">==</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Stack is empty (Underflow).\n"</span>;
+  <span class="keyword">return</span>;
+ }
+ <span class="struct">Node</span>* temp <span class="operator">=</span> top;
+ <span class="keyword">int</span> poppedValue <span class="operator">=</span> top<span class="operator">-></span>data;
+ top <span class="operator">=</span> top<span class="operator">-></span>next; <span class="comment">// Move top to the next node</span>
+ <span class="keyword">delete</span> temp;
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Popped "</span> <span class="operator">&lt;&lt;</span> poppedValue <span class="operator">&lt;&lt;</span> <span class="string">" from the stack.\n"</span>;
+}
+
+<span class="comment">// Display: Show all elements from top to bottom</span>
+<span class="keyword">void</span> <span class="function">displayStack</span>(<span class="struct">Node</span>* top) {
+ <span class="keyword">if</span> (top <span class="operator">==</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Stack is empty.\n"</span>;
+  <span class="keyword">return</span>;
+ }
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Stack (Top to Bottom): "</span>;
+ <span class="keyword">while</span> (top <span class="operator">!=</span> <span class="literal">NULL</span>) {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> top<span class="operator">-></span>data <span class="operator">&lt;&lt;</span> <span class="string">" | "</span>;
+  top <span class="operator">=</span> top<span class="operator">-></span>next;
+ }
+ <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Floor\n"</span>;
+}
+
+<span class="keyword">int</span> main() {
+ <span class="struct">Node</span>* top <span class="operator">=</span> <span class="literal">NULL</span>;
+ <span class="keyword">int</span> choice, value;
+ <span class="keyword">do</span> {
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"\n--- Linked List Stack Menu ---\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"1. Push element\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"2. Pop element\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"3. Display stack\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"4. Exit\n"</span>;
+  <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Enter your choice: "</span>;
+  <span class="type">cin</span> <span class="operator">&gt;&gt;</span> choice;
+  <span class="keyword">switch</span> (choice) {
+   <span class="keyword">case</span> <span class="literal">1</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Enter value to push: "</span>;
+    <span class="type">cin</span> <span class="operator">&gt;&gt;</span> value;
+    <span class="function">push</span>(top, value);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">2</span>:
+    <span class="function">pop</span>(top);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">3</span>:
+    <span class="function">displayStack</span>(top);
+    <span class="keyword">break</span>;
+   <span class="keyword">case</span> <span class="literal">4</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Exiting...\n"</span>;
+    <span class="keyword">break</span>;
+   <span class="keyword">default</span>:
+    <span class="type">cout</span> <span class="operator">&lt;&lt;</span> <span class="string">"Invalid choice. Try again.\n"</span>;
+  }
+ } <span class="keyword">while</span> (choice <span class="operator">!=</span> <span class="literal">4</span>);
+ <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Interactive Stack Simulation:</h2>
+    
+    <div class="menu-container">
+        <label for="input-value">Value:</label>
+        <input type="number" id="input-value" value="10">
+        
+        <button onclick="simulateOperation(1)">1. Push</button>
+        <button onclick="simulateOperation(2)">2. Pop</button>
+        <button onclick="simulateOperation(3)">3. Display</button>
+        <button onclick="simulateOperation(4)">4. Exit/Reset</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">--- Linked List Stack Menu ---<br>Type a value and select an operation (1, 2, 3, or 4).</div>
+
+    <script>
+        // --- JAVASCRIPT SIMULATION OF STACK ---
+        
+        // Internal Stack Representation (JavaScript Array for simplicity, simulating the LIFO order)
+        let stack = []; 
+        let outputLog = "";
+
+        function log(message) {
+            outputLog += message + "\n";
+            document.getElementById('output').innerHTML = outputLog.replace(/\n/g, '<br>');
+        }
+
+        function displayStackJs() {
+            if (stack.length === 0) {
+                log("Stack is empty.");
+                return;
+            }
+            // Display shows Top to Bottom, which for an array, is reversed order
+            log("Stack (Top to Bottom): " + stack.join(" | ") + " | Floor");
+        }
+
+        function pushJs(value) {
+            // Push: Add to the end of the array to simulate the "top" of the stack
+            stack.push(value); 
+            log("Enter value to push: " + value);
+            log("Pushed " + value + " onto the stack.");
+        }
+
+        function popJs() {
+            if (stack.length === 0) {
+                log("Stack is empty (Underflow).");
+                return;
+            }
+            // Pop: Remove the last element (the "top")
+            const poppedValue = stack.pop(); 
+            log("Popped " + poppedValue + " from the stack.");
+        }
+        
+        function resetSimulation() {
+            stack = [];
+            outputLog = "\n--- Linked List Stack Menu ---\n";
+            outputLog += "1. Push element\n2. Pop element\n3. Display stack\n4. Exit\n";
+            log("Exiting... Stack has been reset.");
+        }
+
+        // Main simulation function called by the buttons
+        function simulateOperation(choice) {
+            let value = parseInt(document.getElementById('input-value').value);
+            
+            // Log the menu interaction
+            log("\nEnter your choice: " + choice);
+
+            switch (choice) {
+                case 1:
+                    if (isNaN(value)) {
+                        log("Invalid value. Please enter a number.");
+                        return;
+                    }
+                    pushJs(value);
+                    break;
+                case 2:
+                    popJs();
+                    break;
+                case 3:
+                    displayStackJs();
+                    break;
+                case 4:
+                    resetSimulation();
+                    break;
+                default:
+                    log("Invalid choice. Try again.");
+            }
+        }
+
+        // Initialize the console view
+        document.addEventListener('DOMContentLoaded', () => {
+             resetSimulation();
+        });
+    </script>
+
+</body>
+</html>

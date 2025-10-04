@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Code Runner Simulation - Call by Address</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        /* 1. Code Block Container Styling */
+        pre { 
+            background-color: #272822; /* Dark background like Monokai/Sublime */
+            color: #f8f8f2; /* Default text color (light gray) */
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* 2. Syntax Highlighting Classes (Mimicking an Editor Theme) */
+        .keyword { color: #f92672; }        /* e.g., int, void, using, return */
+        .include { color: #66d9ef; }        /* e.g., #include */
+        .type { color: #a6e22e; }           /* e.g., cout, cin, std */
+        .string { color: #e6db74; }         /* Text inside quotes */
+        .comment { color: #75715e; }        /* Comments */
+        .operator { color: #f8f8f2; }       /* <<, >>, = */
+        
+        /* 3. Input/Output Styling */
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 10px; 
+            margin-top: 15px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        label, input { margin-bottom: 10px; display: inline-block; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px;}
+        button:hover { background-color: #45a049; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Code to Run (Call-by-Reference Swap):</h2>
+    
+    <pre><code>
+<span class="include">#include</span>&lt;iostream&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="keyword">void</span> swap (<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)
+{
+    <span class="keyword">int</span> temp;
+    temp<span class="operator">=</span>*a;
+    *a<span class="operator">=</span>*b;
+    *b<span class="operator">=</span>temp;
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"Value of a after swap - "</span><span class="operator">&lt;&lt;</span>*a<span class="operator">&lt;&lt;</span><span class="type">endl</span>;
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"Value of b after swap - "</span><span class="operator">&lt;&lt;</span>*b<span class="operator">&lt;&lt;</span><span class="type">endl</span>;
+}
+
+<span class="keyword">int</span> main ()
+{
+    <span class="keyword">int</span> a, b;
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"Enter value of a - "</span>;
+    <span class="type">cin</span><span class="operator">&gt;&gt;</span>a;
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"Enter value of b - "</span>;
+    <span class="type">cin</span><span class="operator">&gt;&gt;</span>b;
+    swap(<span class="operator">&amp;</span>a, <span class="operator">&amp;</span>b);
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"\n Value of a is - "</span><span class="operator">&lt;&lt;</span>a;
+    <span class="type">cout</span><span class="operator">&lt;&lt;</span><span class="string">"\n Value of b is - "</span><span class="operator">&lt;&lt;</span>b;    
+    <span class="keyword">return</span> 0;
+}
+    </code></pre>
+
+    <label for="inputA">Enter value of a:</label>
+    <input type="number" id="inputA" value="10"><br>
+
+    <label for="inputB">Enter value of b:</label>
+    <input type="number" id="inputB" value="20"><br>
+
+    <button onclick="runCppCode()">Run C++ Code (Simulated)</button>
+
+    <h2>Program Output:</h2>
+    <div id="output">Enter values and click the button to see the simulated output.</div>
+
+    <script>
+        function runCppCode() {
+            const outputElement = document.getElementById('output');
+            
+            // 1. Get user input from the HTML fields
+            const initialA = parseInt(document.getElementById('inputA').value);
+            const initialB = parseInt(document.getElementById('inputB').value);
+            
+            if (isNaN(initialA) || isNaN(initialB)) {
+                outputElement.innerHTML = "<strong>Error:</strong> Please enter valid numbers for both A and B.";
+                return;
+            }
+
+            // --- SIMULATED C++ EXECUTION (Call-by-Reference) ---
+            
+            // 2. The key difference: Since this is Call-by-Reference, 
+            // the variables in main() ARE swapped by the function call.
+            const swappedA = initialB;
+            const swappedB = initialA;
+            
+            // 3. Construct the Simulated Output Text 
+            const cppOutput = 
+                "Program starting...\n" +
+                "Enter value of a - " + initialA + "\n" +
+                "Enter value of b - " + initialB + "\n" +
+                
+                // Output from inside the swap function (using swapped values)
+                "Value of a after swap - " + swappedA + "\n" +
+                "Value of b after swap - " + swappedB + "\n" +
+                
+                // Output from main() after the function call (using SWAPPED values)
+                "\n Value of a is - " + swappedA + 
+                "\n Value of b is - " + swappedB;
+            
+            // 4. Display the result
+            outputElement.innerHTML = "<strong>Simulated Output:</strong>\n" + cppOutput;
+        }
+    </script>
+
+</body>
+</html>

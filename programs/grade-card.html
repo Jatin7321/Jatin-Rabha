@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Grade Card Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        
+        /* Code Block Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .class { color: #fd971f; }
+        .function { color: #e6db74; }
+        .literal { color: #ae81ff; } 
+        
+        /* UI and Output Styling */
+        .input-container { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; background-color: #f9f9f9; }
+        .input-group { margin-bottom: 8px; }
+        .input-group label { display: inline-block; width: 150px; }
+        .input-group input { padding: 5px; width: 60px; text-align: right; }
+
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+        }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px;}
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Student Grade Card Code:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="include">#include</span> &lt;string&gt;
+<span class="include">#include</span> &lt;iomanip&gt;
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Class to hold student data and methods</span>
+<span class="keyword">class</span> <span class="class">Student</span> {
+<span class="keyword">public</span>:
+    <span class="type">string</span> name;
+    <span class="keyword">int</span> rollNo;
+    <span class="keyword">float</span> marks[<span class="literal">5</span>];
+    <span class="keyword">float</span> totalMarks;
+    <span class="keyword">float</span> percentage;
+    <span class="keyword">char</span> grade;
+
+    <span class="keyword">void</span> <span class="function">calculateResults</span>() {
+        totalMarks <span class="operator">=</span> <span class="literal">0</span>;
+        <span class="comment">// ... calculation logic ...</span>
+    }
+};
+
+<span class="keyword">void</span> <span class="function">displayCard</span>(<span class="keyword">const</span> <span class="class">Student</span><span class="operator">&amp;</span> s) {
+    <span class="comment">// ... prints formatted report card ...</span>
+}
+
+<span class="keyword">int</span> main() {
+    <span class="comment">// ... create student object, input data, call functions ...</span>
+    <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Simulated Grade Card Entry:</h2>
+    
+    <div class="input-container">
+        <div class="input-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="Jane Doe" style="width: 150px;">
+        </div>
+        <div class="input-group">
+            <label for="rollno">Roll No:</label>
+            <input type="number" id="rollno" value="105">
+        </div>
+        <hr>
+        <p>Enter Marks (Max 100 per subject):</p>
+        <div class="input-group">
+            <label for="sub1">Subject 1 (Math):</label>
+            <input type="number" id="sub1" value="85" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="sub2">Subject 2 (Science):</label>
+            <input type="number" id="sub2" value="92" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="sub3">Subject 3 (History):</label>
+            <input type="number" id="sub3" value="78" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="sub4">Subject 4 (English):</label>
+            <input type="number" id="sub4" value="95" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="sub5">Subject 5 (CS):</label>
+            <input type="number" id="sub5" value="88" min="0" max="100">
+        </div>
+        <button onclick="calculateAndDisplay()">Generate Grade Card</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">Enter student details and marks, then click "Generate Grade Card".</div>
+
+    <script>
+        function calculateResults(marks) {
+            let totalMarks = 0;
+            for (let mark of marks) {
+                totalMarks += mark;
+            }
+            const percentage = totalMarks / 5.0;
+
+            let grade;
+            if (percentage >= 90) {
+                grade = 'A';
+            } else if (percentage >= 80) {
+                grade = 'B';
+            } else if (percentage >= 70) {
+                grade = 'C';
+            } else if (percentage >= 60) {
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+            return { totalMarks: totalMarks, percentage: percentage.toFixed(2), grade: grade };
+        }
+
+        function calculateAndDisplay() {
+            const name = document.getElementById('name').value;
+            const rollNo = document.getElementById('rollno').value;
+            const outputElement = document.getElementById('output');
+
+            const marks = [
+                parseInt(document.getElementById('sub1').value) || 0,
+                parseInt(document.getElementById('sub2').value) || 0,
+                parseInt(document.getElementById('sub3').value) || 0,
+                parseInt(document.getElementById('sub4').value) || 0,
+                parseInt(document.getElementById('sub5').value) || 0
+            ];
+
+            // Input Validation (Check if marks are within 0-100 range)
+            for (let mark of marks) {
+                if (mark < 0 || mark > 100 || isNaN(mark)) {
+                    outputElement.innerHTML = "<strong>ERROR:</strong> Please ensure all marks are valid numbers between 0 and 100.";
+                    return;
+                }
+            }
+
+            // Perform the calculation (mimicking C++ calculateResults)
+            const results = calculateResults(marks);
+
+            // Generate the output (mimicking C++ displayCard)
+            const cardOutput = `
+--- Student Grade Card ---
+Name: ${name}
+Roll No: ${rollNo}
+--------------------------
+Subject 1 Marks: ${marks[0]}
+Subject 2 Marks: ${marks[1]}
+Subject 3 Marks: ${marks[2]}
+Subject 4 Marks: ${marks[3]}
+Subject 5 Marks: ${marks[4]}
+--------------------------
+Total Marks: ${results.totalMarks} / 500
+Percentage: ${results.percentage}%
+Grade: ${results.grade}
+--------------------------
+            `;
+
+            outputElement.innerHTML = `<pre style="background-color:#fff; color:#333; border:none;">${cardOutput.trim()}</pre>`;
+        }
+
+        // Run on load with default values
+        document.addEventListener('DOMContentLoaded', calculateAndDisplay);
+    </script>
+
+</body>
+</html>

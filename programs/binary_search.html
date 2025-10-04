@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C++ Binary Search Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f9; }
+
+        /* Code Block Styling */
+        pre { 
+            background-color: #272822; 
+            color: #f8f8f2;
+            padding: 15px; 
+            border-radius: 5px;
+            overflow-x: auto; 
+            font-family: monospace; 
+            line-height: 1.4;
+        }
+
+        /* Syntax Highlighting Classes */
+        .keyword { color: #f92672; }
+        .include { color: #66d9ef; }
+        .type { color: #a6e22e; }
+        .string { color: #e6db74; }
+        .comment { color: #75715e; }
+        .literal { color: #ae81ff; } 
+        .define { color: #66d9ef; }
+
+        /* UI and Output Styling */
+        .input-container { 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 5px; 
+            background-color: #ffffff; 
+        }
+        
+        #output { 
+            border: 2px solid #333; 
+            min-height: 50px; 
+            padding: 15px; 
+            margin-top: 20px; 
+            font-family: monospace; 
+            white-space: pre-wrap;
+            background-color: #ffffff;
+            color: #333;
+        }
+        button { padding: 10px 20px; background-color: #e67e22; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; border-radius: 4px;}
+        button:hover { background-color: #d35400; }
+        
+        .array-input { margin-bottom: 10px; }
+        .array-input label { font-weight: bold; }
+        #arrayElements { width: 80%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;}
+        #targetValue { width: 100px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; text-align: center; }
+        
+        .note { color: #c0392b; font-weight: bold; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <h2>C++ Binary Search Program:</h2>
+    
+    <pre><code>
+<span class="include">#include</span> &lt;iostream&gt;
+<span class="include">#include</span> &lt;string&gt;
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="type">std</span>;
+
+<span class="comment">// Function to perform Binary Search</span>
+<span class="keyword">int</span> <span class="function">binarySearch</span>(<span class="keyword">const</span> <span class="keyword">int</span> arr[], <span class="keyword">int</span> size, <span class="keyword">int</span> target) {
+    <span class="keyword">int</span> left = <span class="literal">0</span>;
+    <span class="keyword">int</span> right = size - <span class="literal">1</span>;
+    
+    <span class="comment">// Loop until the pointers cross</span>
+    <span class="keyword">while</span> (left &lt;= right) {
+        <span class="comment">// Calculate the middle index</span>
+        <span class="keyword">int</span> mid = left + (right - left) / <span class="literal">2</span>;
+
+        <span class="comment">// Check if the target is present at mid</span>
+        <span class="keyword">if</span> (arr[mid] <span class="operator">==</span> target) {
+            <span class="keyword">return</span> mid; <span class="comment">// Found the element! Return its index</span>
+        }
+        
+        <span class="comment">// If target is greater, ignore the left half</span>
+        <span class="keyword">if</span> (arr[mid] <span class="operator">&lt;</span> target) {
+            left = mid + <span class="literal">1</span>;
+        }
+        
+        <span class="comment">// If target is smaller, ignore the right half</span>
+        <span class="keyword">else</span> {
+            right = mid - <span class="literal">1</span>;
+        }
+    }
+    
+    <span class="comment">// Element was not found</span>
+    <span class="keyword">return</span> -<span class="literal">1</span>;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="type">cout</span> &lt;&lt; <span class="string">"--- C++ Binary Search Demonstration ---\\n\\n"</span>;
+
+    <span class="comment">// NOTE: Array MUST be sorted for Binary Search to work</span>
+    <span class="keyword">const</span> <span class="keyword">int</span> arrSize = <span class="literal">10</span>;
+    <span class="keyword">int</span> sortedArray[arrSize] = {<span class="literal">5</span>, <span class="literal">12</span>, <span class="literal">18</span>, <span class="literal">25</span>, <span class="literal">30</span>, <span class="literal">44</span>, <span class="literal">51</span>, <span class="literal">67</span>, <span class="literal">80</span>, <span class="literal">93</span>};
+    <span class="keyword">int</span> searchTarget = <span class="literal">44</span>; <span class="comment">// The value we want to find</span>
+
+    <span class="comment">// ... display code and function call ...</span>
+
+    <span class="keyword">return</span> <span class="literal">0</span>;
+}
+    </code></pre>
+    
+    <h2>Simulated Binary Search Entry:</h2>
+    
+    <div class="input-container">
+        <div class="array-input">
+            <label for="arrayElements">Sorted Array Elements (comma-separated):</label><br>
+            <input type="text" id="arrayElements" value="5, 12, 18, 25, 30, 44, 51, 67, 80, 93">
+            <p class="note">NOTE: Array MUST be sorted for Binary Search to work efficiently!</p>
+        </div>
+        
+        <div class="array-input">
+            <label for="targetValue">Target Value to Search:</label>
+            <input type="number" id="targetValue" value="44">
+        </div>
+        
+        <button onclick="performSearch()">Perform Binary Search</button>
+    </div>
+
+    <h3>Output Console:</h3>
+    <div id="output">Enter array elements (sorted) and a target value, then click "Perform Binary Search".</div>
+
+    <script>
+        function binarySearchJS(arr, target) {
+            let left = 0;
+            let right = arr.length - 1;
+            let iterations = 0;
+            let log = "--- Search Steps ---\n";
+
+            while (left <= right) {
+                iterations++;
+                let mid = Math.floor(left + (right - left) / 2);
+                
+                log += `Iteration ${iterations}: Left=${left}, Right=${right}, Mid=${mid}, Value=${arr[mid]}\n`;
+
+                if (arr[mid] === target) {
+                    log += `\nElement ${target} found at index ${mid}!\n`;
+                    return { index: mid, log: log };
+                }
+                
+                if (arr[mid] < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            
+            log += `\nTarget ${target} was NOT found.\n`;
+            return { index: -1, log: log };
+        }
+
+        function performSearch() {
+            const outputElement = document.getElementById('output');
+            const arrayInput = document.getElementById('arrayElements').value;
+            const targetInput = parseInt(document.getElementById('targetValue').value);
+            
+            // 1. Parse Array Input
+            const arr = arrayInput.split(',')
+                                 .map(s => parseInt(s.trim()))
+                                 .filter(n => !isNaN(n)); // Filter out non-numbers
+            
+            if (arr.length === 0) {
+                outputElement.innerHTML = "<strong>ERROR:</strong> Please enter a valid, comma-separated list of numbers.";
+                return;
+            }
+
+            // 2. Perform Search (Mimicking C++ logic)
+            const result = binarySearchJS(arr, targetInput);
+
+            // 3. Generate Final Output
+            let status;
+            if (result.index !== -1) {
+                status = `Element ${targetInput} found at index: ${result.index}`;
+            } else {
+                status = `Element ${targetInput} is NOT present in the array.`;
+            }
+
+            const finalOutput = `
+--- C++ Binary Search Demonstration ---
+
+Sorted Array: ${arr.join(', ')}
+Target Value: ${targetInput}
+
+${result.log.trim()}
+
+--- Final Search Result ---
+${status}
+---------------------------------------
+            `;
+
+            outputElement.innerHTML = `<pre style="background-color:#fff; color:#333; border:none; padding: 0px;">${finalOutput.trim()}</pre>`;
+        }
+
+        // Run on load with default values
+        document.addEventListener('DOMContentLoaded', performSearch);
+    </script>
+
+</body>
+</html>
