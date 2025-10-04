@@ -172,6 +172,7 @@ function scrollDragon() {
     
     document.addEventListener('DOMContentLoaded', function() {
   const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'none'; 
   const navButtons = document.querySelectorAll('.tab-content li a'); 
   navButtons.forEach(button => {
     button.addEventListener('click', function(event) {
