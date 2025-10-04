@@ -33,11 +33,6 @@ body{
   to { opacity: 0; visibility: hidden;}
 }
 
-.pname {
-    display: block;
-    text-decoration: none;
-}
-
 #loading-overlay {
     position: fixed;
     top: 0;
@@ -46,7 +41,7 @@ body{
     height: 100%;
     color: #fff;
     background: #555;
-    z-index: 9999;
+    z-index: 999;
     display: none;
     flex-direction: column ;
     justify-content: center;

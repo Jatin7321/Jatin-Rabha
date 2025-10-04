@@ -185,3 +185,11 @@ function scrollDragon() {
     });
   });
 });
+
+window.addEventListener('pageshow', function(event) {
+  const loadingOverlay = document.getElementById('loading-overlay');
+  
+  if (event.persisted) { 
+    loadingOverlay.style.display = 'none';
+  }
+});
