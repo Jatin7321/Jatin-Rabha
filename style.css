@@ -715,7 +715,9 @@ textarea{
 .creeper{
   height: 200px;
 }
-
+#welcome{
+  margin: 100px auto;
+}
 .welcome img{
   width: 300px;
 }
