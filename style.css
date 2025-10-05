@@ -571,18 +571,6 @@ textarea{
   to   { left: 100%; top: 100px; }
 }
 
-.ground-objects{
-  position: absolute;
-  bottom: 1710px;
-  left: 70px;
-  right: 70px;
-  filter: blur(2px);
-}
-.ground-objects img{
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .ground {
   position: absolute;
   bottom: 1650px;
@@ -596,11 +584,12 @@ textarea{
 .ground-stone {
   position: absolute;
   width: 100%;
-  height: 560px;
+  height: 1670px;
   background: url('/blocks/stone.png') repeat;
   background-size: 70px 70px;
   filter: blur(2px);
   z-index: -3;
+  bottom: 0px;
 }
 
 #minecraft-ground {
@@ -682,6 +671,40 @@ textarea{
 /* 📱 Mobile View */
 @media (max-width: 768px) {
  
+ .menu-toggle {
+  display: block; 
+  position: absolute; 
+  left: 20px;
+  top: 10px;
+ }
+ 
+ #header {
+  justify-content: flex-end;
+  padding-right: 20px;
+ }
+
+ #header .menu {
+  display: none; 
+  position: absolute;
+  top: 70px;
+  left: -3%;
+  width: 100%;
+  flex-direction: column; 
+  background: rgba(0,0,0,0.8); 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+ }
+
+ #header .menu.active {
+  display: flex; 
+ }
+
+ #header .menu button {
+  width: 80%; 
+  margin: 10px auto;
+  height: 40px;
+ }
+
+ 
  #preloader {
   width: 100%; height: 100%;
   background: #333;
@@ -695,6 +718,21 @@ textarea{
 
 .welcome img{
   width: 300px;
+}
+.welcome-container {
+  font-size: 12px;
+  height: 200px;
+  width: 86%;
+}
+
+.inside-container {
+  font-size: 12px;
+  height: 79%;
+  width: 98%;
+  line-height: 2;
+}
+.inside-container img{
+  height: 160px;
 }
 
 #programs{
@@ -862,5 +900,12 @@ textarea{
 .block {
     width: 30px;
     height: 30px;
+}
+#dragonWrapper {
+  bottom: -300px;
+  right: 10%;
+}
+#dragon {
+  width: 300px;
 }
 }
