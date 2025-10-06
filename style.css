@@ -27,6 +27,10 @@ body{
   z-index: 9999;
   animation: fadeOut 5s ease 4s forwards;
 }
+#preloader p{
+  color: #cdcdcd;
+  font-size: 12px;
+}
 
 @keyframes fadeOut{
   from { opacity: 1;}
@@ -703,6 +707,10 @@ textarea{
   left: 20px;
   top: 10px;
  }
+ #preloader p{
+  color: #dcdcdc;
+  font-size: 10px;
+}
  
  #header {
   justify-content: flex-end;
