@@ -119,10 +119,13 @@ btn.onclick = (e) => {
 
 window.onscroll = function() {
     let btn = document.getElementById("scrollBtn");
+    let frogWrapper = document.getElementById("frogWrapper");
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
         btn.style.display = "block";
+        frogWrapper.style.display = "block";
     } else {
         btn.style.display = "none";
+        frogWrapper.style.display = "none";
     }
 };
 close.onclick = () => popup.style.display = "none";
@@ -192,4 +195,22 @@ window.addEventListener('pageshow', function(event) {
   if (event.persisted) { 
     loadingOverlay.style.display = 'none';
   }
+});
+
+
+const frogWrapper = document.getElementById('frogWrapper'); 
+
+function makeFrogJump() {
+  if (!frogWrapper) return;
+  frogWrapper.classList.remove('jump-and-fall');
+  void frogWrapper.offsetWidth; 
+  frogWrapper.classList.add('jump-and-fall');
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollButton = document.getElementById('scrollBtn');
+    if (scrollButton) {
+        scrollButton.addEventListener('click', function() {
+            makeFrogJump();
+        });
+    }
 });

@@ -610,13 +610,33 @@ textarea{
     background-size: cover;
 }
 
-/* Button */
-.frog{
-  height: 150px;
-  position: fixed;
-  right: 10px;
-  bottom: 60px;
+#frogImage {
+  height: 40px;
 }
+#frogWrapper {
+  position: fixed;
+  bottom: 90px; 
+  right: 90px; 
+  z-index: 1001; 
+  display: none;
+}
+
+#frogWrapper.jump-and-fall {
+  animation: frogJump 1s ease-in-out forwards;
+}
+
+@keyframes frogJump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-80px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 #scrollBtn {
   display: none;
   position: fixed;
@@ -978,6 +998,15 @@ textarea{
 .block {
     width: 30px;
     height: 30px;
+}
+
+#frogImage {
+  height: 36px;
+}
+
+#frogWrapper {
+  bottom: 75px;
+  right: 40px;
 }
 #dragonWrapper {
   bottom: -300px;
