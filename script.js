@@ -16,6 +16,25 @@
 window.addEventListener('load', checkDesktopAccess);
 window.addEventListener('resize', checkDesktopAccess);*/
 
+const backgroundAudio = document.getElementById('background-audio');
+const toggleButton = document.getElementById('sound-toggle-button');
+
+backgroundAudio.play().catch(error => {
+    console.log("Autoplay blocked. Sound will start on first user interaction.");
+});
+
+
+function toggleAudio() {
+    if (backgroundAudio.paused) {
+        backgroundAudio.play();
+        toggleButton.style.backgroundImage = "url('/logo/unmute.png')";
+    } else {
+        backgroundAudio.pause();
+        toggleButton.style.backgroundImage = "url('/logo/mute.png')";
+    }
+}
+
+
 window.addEventListener("load", function() {
     setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
