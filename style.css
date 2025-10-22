@@ -277,8 +277,13 @@ body{
     inset -3px -3px #228b22;
   font-size: 16px;
 }
-.me-button .active{
-  background: #000;
+.about-left-box .active{
+  color: #fff;
+  background: #3C9F50;
+  border: solid 1.5px #fff;
+  box-shadow: inset 3px 3px #225b22,
+  inset -2px -2px #55ff55;
+  font-size: 12px;
 }
 
 #programs{

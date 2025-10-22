@@ -93,6 +93,20 @@ function generateBlocks(count) {
 generateBlocks(300); 
 
 
+function showDiv(tabId) {
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(content => {
+        content.style.display = 'none';
+    });
+    const buttons = document.querySelectorAll('.me-button');
+    buttons.forEach(button => {
+        button.classList.remove('active');
+    });
+    document.getElementById(tabId).style.display = 'block';
+    event.currentTarget.classList.add('active');
+}
+
+
 function showTab(tabId) {
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => {
