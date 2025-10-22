@@ -210,9 +210,13 @@
             <div id="feedbackPopUp">
                 <div class="PopUp-content">
                     <span id="closePopUp" data-tip="close">&times;</span>
-                    <form action="https://formspree.io/f/xnnbdpey" method="POST">
-                        <textarea name="feedback" placeholder="Write your feedback....."></textarea>
-                        <button type="submit">submit</button>
+                    <form id="my-form" action="https://formspree.io/f/xnnbdpey" method="POST">
+                        <label>Email:</label>
+                        <input type="email" name="email" />
+                        <label>Message:</label>
+                        <input type="text" name="message" />
+                        <button id="my-form-button">Submit</button>
+                        <p id="my-form-status"></p>
                     </form>
                 </div>
                 
