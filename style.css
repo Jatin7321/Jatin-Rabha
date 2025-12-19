@@ -172,7 +172,7 @@ body{
 	100%{ content: '...';}
 }
 #about{
-  margin: 50px auto;
+  margin: 20px auto;
   padding-top: 120px;
   width: 90%;
   height: 600px;
@@ -233,6 +233,9 @@ body{
 }
 .content{
   display: none;
+}
+#box1 iframe{
+  margin: 10px auto;
 }
 #box1{
   display: block;
